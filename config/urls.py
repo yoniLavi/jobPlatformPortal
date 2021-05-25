@@ -13,9 +13,18 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from apps.load.views import GithubViewSet
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from rest_framework.routers import SimpleRouter
+
+
+load_loader = SimpleRouter(trailing_slash=False)
+load_loader.register("github", GithubViewSet, basename="github")
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("load/", include(load_loader.urls)),
+    path('', include('apps.portal.urls')),
 ]

@@ -1,5 +1,6 @@
 from django.core.serializers.json import DjangoJSONEncoder
 from django.db.models import JSONField, QuerySet
+from django.urls import reverse
 from django_extensions.db.models import models,  TimeStampedModel
 
 
@@ -24,3 +25,6 @@ class JobOffer(TimeStampedModel):
     url = models.CharField(max_length=500)
     application_url = models.CharField(max_length=500)
     raw_json = JSONField(encoder=DjangoJSONEncoder)
+
+    def get_absolute_url(self):
+        return reverse('job-detail', args=[str(self.id)])

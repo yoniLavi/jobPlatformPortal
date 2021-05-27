@@ -25,3 +25,9 @@ We can also add a sample job offer by running the following command:
 ```
 python manage.py populate_db
 ```
+
+
+## Template
+
+The template being used can be found here: 
+https://colorlib.com/wp/template/job-board-2/

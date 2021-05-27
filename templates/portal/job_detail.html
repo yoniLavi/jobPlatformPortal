@@ -1,0 +1,111 @@
+{% extends '_base.html' %}
+
+{% block title %}{{ job.title }} - JobPortal{% endblock %}
+{% block jubotron %}{{ job.title }}{% endblock %}
+
+
+{%  block content %}
+    <div class="job_details_area">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="job_details_header">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="https://via.placeholder.com/50" alt="Company Logo">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="#"><h4>{{ job.title }}</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> {{ job.location }}</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-building"></i> {{ job.company }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="descript_wrap white-bg">
+                        <div class="single_wrap">
+                            <h4>Job description</h4>
+                            <span>
+                                {{ job.description|safe }}
+                            </span>
+                        </div>
+                        <div class="single_wrap">
+                            <h4>Requirements</h4>
+                            <span>
+                                {{ job.requirements|safe }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="apply_job_form white-bg">
+                        <h4>Apply for the job</h4>
+                        <a href="{{ job.application_url }}" class="boxed-btn3">Apply Now</a>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="job_sumary">
+                        <div class="summery_header">
+                            <h3>Job Summary</h3>
+                        </div>
+                        <div class="job_content">
+                            <ul>
+                                <li>Published on: <span>{{ job.created|date:"d M Y" }}</span></li>
+                                <li>Vacancy: <span>1 Position</span></li>
+                                <li>Location: <span>{{ job.location }}</span></li>
+                                <li>Department: <span>{{ job.department }}</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="share_wrap d-flex">
+                        <span>Share:</span>
+                        <ul>
+                            <li><a href="#"> <i class="fa fa-facebook"></i></a> </li>
+                            <li><a href="#"> <i class="fa fa-google-plus"></i></a> </li>
+                            <li><a href="#"> <i class="fa fa-twitter"></i></a> </li>
+                            <li><a href="#"> <i class="fa fa-envelope"></i></a> </li>
+                        </ul>
+                    </div>
+                    <div class="job_location_wrap">
+                        <div class="job_lok_inner">
+                            <div id="map" style="height: 200px;"></div>
+                            <script>
+                              function initMap() {
+                                var uluru = {lat: -25.363, lng: 131.044};
+                                var grayStyles = [
+                                  {
+                                    featureType: "all",
+                                    stylers: [
+                                      { saturation: -90 },
+                                      { lightness: 50 }
+                                    ]
+                                  },
+                                  {elementType: 'labels.text.fill', stylers: [{color: '#ccdee9'}]}
+                                ];
+                                var map = new google.maps.Map(document.getElementById('map'), {
+                                  center: {lat: -31.197, lng: 150.744},
+                                  zoom: 9,
+                                  styles: grayStyles,
+                                  scrollwheel:  false
+                                });
+                              }
+
+                            </script>
+                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpfS1oRGreGSBU5HHjMmQ3o5NLw7VdJ6I&callback=initMap"></script>
+
+                          </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock %}

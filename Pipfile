@@ -11,6 +11,8 @@ django-extensions = "*"
 django-environ = "*"
 djangorestframework = "*"
 psycopg2 = "*"
+pytest = "*"
+pytest-django = "*"
 
 
 [requires]
